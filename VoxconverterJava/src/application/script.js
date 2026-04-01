@@ -2,9 +2,6 @@ const formatButtons = document.querySelectorAll(".slct_file_scroll button");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================
-    // SIDEBAR NAVIGATION (UNCHANGED)
-    // =========================
     document.getElementById("converter_side_buttons").addEventListener("click", () => {
         document.querySelector('.Converter_info').style.display = "block";
         document.querySelector('.help_section').style.display = "none";
@@ -35,16 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('#credits_side_buttons').style.backgroundColor = "rgb(83, 83, 83)";
     });
 
-    // =========================
-    // ELEMENTS
-    // =========================
     const inputField = document.getElementById("inputPath");
     const outputField = document.getElementById("outputPath");
     const textarea = document.getElementById("customArgsInput");
 
-    // =========================
-    // BUILD COMMAND (FIXED)
-    // =========================
+
     function buildCommand() {
         const input = inputField.value;
         const output = outputField.value;
@@ -54,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let cmd = "vengi-voxconvert.exe";
 
         if (document.getElementById("scale_checkbox").checked) {
-            cmd += " --scale 2"; // FIXED (scale was undefined)
+            cmd += " --scale 2";
         }
 
         if (document.getElementById("force_checkbox").checked) {
@@ -93,9 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.addEventListener("input", buildCommand);
     outputField.addEventListener("input", buildCommand);
 
-    // =========================
-    // BLACKOUT LOGIC (UNCHANGED)
-    // =========================
     document.getElementById("scale_checkbox").addEventListener("click", () => {
         document.querySelector(".scale_blckout").style.display =
             document.getElementById("scale_checkbox").checked ? "none" : "flex";
@@ -121,9 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("json_checkbox").checked ? "none" : "flex";
     });
 
-    // =========================
-    // FILE BUTTONS (FIXED)
-    // =========================
     document.getElementById("chooseFileBtn").addEventListener("click", () => {
         javaApp.pickInputFile();
     });
@@ -132,9 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
         javaApp.pickOutputFolder();
     });
 
-    // =========================
-    // FORMAT BUTTONS (FIXED)
-    // =========================
     const formatMap = {
         "slct_obj_file": "obj",
         "slct_vox_file": "vox",
@@ -160,22 +143,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 buildCommand();
             }
 
-            // 🔥 REPLACED navigation with Java bridge
             javaApp.selectFormat(ext);
         });
     }
 
-    // =========================
-    // CONVERT BUTTON (FIXED)
-    // =========================
     document.getElementById("customArgsConvertBtn").addEventListener("click", () => {
         const customArgs = textarea.value;
         javaApp.convert(customArgs);
     });
 
-    // =========================
-    // JAVA → JS FUNCTIONS
-    // =========================
     window.setFile = function(path) {
         inputField.value = path;
         window.updateFormatButtons();
