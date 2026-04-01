@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="images/JaxelConverter_Logo.png" alt="JaxelConverter_Logo" style="width: 350px;">
+            <h1>by: PromasterYTJava</h1>
+        </div>
+        <div class="content">
+            <div class="sidebar">
+                <button class="sidebar_buttons" id="converter_side_buttons">Converter</button>
+                <button class="sidebar_buttons" id="help_side_buttons">Help</button>
+                <button class="sidebar_buttons" id="credits_side_buttons">Credits</button>
+            </div>
+
+            <div class="Converter_info">
+                <div class="converter_settings">
+                    <div class="input_output">
+                        <div class="input">
+                            <p>Input</p>
+                            <input id="inputPath" type="text" />
+                            <button class="white_button" id="chooseFileBtn">Choose File</button>
+                        </div>
+                        <div class="output">
+                            <p>Output</p>
+                            <input id="outputPath" type="text"/>
+                            <button class="white_button" id="chooseFolderBtn">Choose Output</button>
+                        </div>
+                        <div class="select_converter">
+                            <p>File Type</p>
+                            <div class="scrll_file_container">
+                                <div class="file_blckout">
+                                    <p style="font-size: 12px;">Please select Input and Output file first!</p>
+                                </div>
+                                <div class="slct_file_scroll">
+                                    <button id="slct_obj_file">OBJ</button>
+                                    <button id="slct_vox_file">VOX</button>
+                                    <button id="slct_vxl_file">VXL</button>
+                                    <button id="slct_qb_file">QB</button>
+                                    <button id="slct_binvox_file">BINVOX</button>
+                                    <button id="slct_kv6_file">KV6</button>
+                                    <button id="slct_v3a_file">V3A</button>
+                                    <button id="slct_fbx_file">FBX</button>
+                                    <button id="slct_gltf_file">GLTF</button>
+                                    <button id="slct_stl_file">STL</button>
+                                    <button id="slct_ply_file">PLY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="converter_more_settings">
+                        <div class="more_settings_blckout">
+                            <p style="font-size: 12px;">Please select Input and Output file first!</p>
+                        </div>
+                        <div class="converter_more_settings_left">
+                            <div style="display: flex; flex-direction: column; align-items: start;">
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                    <label class="switch">
+                                        <input id="scale_checkbox" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <div class="select_scale">
+                                        <div class="scale_blckout">
+                                            <p style="font-size: 12px;">Scale Disabled</p>
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0px;"><br>--scale<br></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="margin: 5px; font-size: 12px;">perform lod conversion of the input volume (50% scale per call)</p>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: start;">
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                    <label class="switch">
+                                        <input id="force_checkbox" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <div class="select_force">
+                                        <div class="force_blckout">
+                                            <p style="font-size: 12px;">File Overwriting Disabled</p>
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0px;"><br>--force<br></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="margin: 5px; font-size: 12px;">overwrite existing files</p>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: start;">
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                    <label class="switch">
+                                        <input id="surface_only_checkbox" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <div class="select_surface_only">
+                                        <div class="surface_only_blckout">
+                                            <p style="font-size: 12px;">Surface Only Disabled</p>
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0px;"><br>--surface-only<br></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="margin: 5px; font-size: 12px;">Remove any non surface voxel. If you are meshing with this, you get also faces on the inner side of your mesh. (Voxel Optimization)</p>
+                            </div>
+                        </div>
+                        <div style="width: 33.34%;">
+                            <div style="display: flex; flex-direction: column; align-items: start;">
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                    <label class="switch">
+                                        <input id="export_palette_checkbox" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <div class="select_export_palette">
+                                        <div class="export_palette_blckout">
+                                            <p style="font-size: 12px;">Export Palette Disabled</p>
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0px;"><br>--export-palette<br></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="margin: 5px; font-size: 12px;">will save the palette file for the given input file.</p>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: start;">
+                                <div style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                    <label class="switch">
+                                        <input id="json_checkbox" type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <div class="select_json">
+                                        <div class="json_blckout">
+                                            <p style="font-size: 12px;">Scene Graph Disabled</p>
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0px;"><br>--json<br></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="margin: 5px; font-size: 12px;">Print the scene graph of the input file. Give full as argument to also get mesh details.</p>
+                            </div>
+                        </div>
+                        <div class="select_converter" style="width: 24.7%;">
+                        </div>
+                    </div>
+                    <div class="custom_args_container">
+                        <div class="custom_args_section">
+                            <p>Custom Arguments</p>
+                            <textarea class="customArgsInput" id="customArgsInput"></textarea>
+                            <button class="white_button customArgsConvertBtn" id="customArgsConvertBtn">Convert File</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="console_container">
+                    <div class="console_header">
+                        <p>Console Log</p>
+                    </div>
+                    <div class="console_display"></div>
+                </div>
+            </div>
+
+            <div class="help_section">
+                <div style="padding: 10px; padding-left: 30px; padding-right: 30px;">
+                    <h1>JaxelConverter Help Guide</h1>
+                    <div class="section">
+                        <h2>Overview</h2>
+                        <p>
+                            This tool is a graphical interface for <b>vengi-voxconvert</b>, allowing you to convert voxel files
+                            without manually typing command-line arguments.
+                            <br><br>
+                            More Information:<br>
+                            <b>GITHUB: </b><a href="https://github.com/vengi-voxel/vengi?tab=readme-ov-file" target="_blank">https://github.com/vengi-voxel/vengi?tab=readme-ov-file</a><br><br>
+                            <b>VENGI-VOXEL: </b><a href="https://vengi-voxel.github.io/vengi/voxconvert/Usage/" target="_blank">https://vengi-voxel.github.io/vengi/voxconvert/Usage/</a>
+                        </p>
+                    </div>
+                    <div class="section">
+                        <h2>Basic Usage</h2>
+                        <ol>
+                            <li>Click <b>Choose File</b> to select your input file</li>
+                            <li>Click <b>Choose Folder</b> to select the output location</li>
+                            <li>Select your desired <b>output format</b></li>
+                            <li>Adjust settings if needed</li>
+                            <li>Click <b>Convert</b></li>
+                        </ol>
+                    </div>
+                    <div class="section">
+                        <h2>Settings Explained</h2>
+                        <ul>
+                            <li><b>Scale (--scale)</b> – Resizes the model</li>
+                            <li><b>Force (--force)</b> – Forces conversion even if issues are detected</li>
+                            <li><b>Surface Only (--surface-only)</b> – Converts only outer surfaces</li>
+                            <li><b>Export Palette (--export-palette)</b> – Saves the model’s color palette</li>
+                            <li><b>JSON (--json)</b> – Outputs model data in JSON format</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h2>Supported Formats</h2>
+                        <ul>
+                            <li>.vox – MagicaVoxel</li>
+                            <li>.vxl – Command & Conquer voxel</li>
+                            <li>.obj – Standard 3D model</li>
+                            <li>.fbx – Advanced 3D format</li>
+                            <li>.gltf – Real-time rendering</li>
+                            <li>.stl – 3D printing</li>
+                            <li>.ply – Mesh / point cloud</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h2>Example Command</h2>
+                        <code>
+                            vengi-voxconvert.exe --scale 2 --surface-only --input "model.vxl" --output "model.vox"
+                        </code>
+                    </div>
+                    <div class="section">
+                        <h2>Notes</h2>
+                        <ul>
+                            <li class="warning">Input file must be supported</li>
+                            <li class="warning">Output folder must exist</li>
+                            <li class="warning">Large models may take time to convert</li>
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h2>Advanced Usage</h2>
+                        <p>
+                            You can manually edit the generated command in the textbox to use custom arguments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="credits_section">
+                <div style="padding: 10px; padding-left: 30px; padding-right: 30px;">
+                    <h1>Credits</h1>
+                    <div class="section" style="display: flex; justify-content: start; align-items: center;">
+                        <div>
+                            <img src="images/JaxelConverter_Logo.png" alt="JaxelConverter_Logo" style="width: 350px;">
+                        </div>
+                        <div>
+                            <h1>Jaxel Converter</h1>
+                            <p style="color: rgb(152, 152, 152);">Version: jc1.0_u-vengi-0.4.0<br>By: PromasterYTJava</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h2>Overview</h2>
+                        <p>
+                            Jaxel Converter, created by Dan Zantua, better known online as PromasterYTJava, is a program designed to simplify the conversion process of another voxel converter, vengi-voxconvert, which only runs through CMD or PowerShell, making it inconvenient for users. Jaxel Converter solves this problem by providing an intuitive interface that allows users to easily convert their models.
+                            <br><br>
+                            (ik there is already a similar and better program for this which is the vengi voxel editor, BUT I WANNA MAKE ONE ALRIGHT? cuz, i just solely use the converting aspect of it which could be done in powershell or cmd, so yeahh)
+                        </p>
+                        <hr style="margin: 20px;">
+                        <p style="margin: 0px;">My Links:</p>
+                        <ul>
+                            <li><a href="https://github.com/promaster-gaming-8000/JaxelConverter">Github</a></li>
+                            <li><a href="https://www.youtube.com/@promasterytjava">YouTube</a></li>
+                            <li><a href="https://discord.gg/JAsmxecvjK">Discord</a></li>
+                            <li><a href="https://x.com/8000Gaming">Twitter</a></li>
+                        </ul>
+                        <br>
+                        <p style="margin: 0px;">Other Links:</p>
+                        <ul>
+                            <li><a href="https://github.com/vengi-voxel/vengi?tab=readme-ov-file">Vengi-Voxel Github</a></li>
+                        </ul>
+                        <br>
+                        <p style="margin: 0px;">Credits:</p>
+                        <ul>
+                            <li>Author of JaxelConverter:</li>
+                            <ul>
+                                <li><a href="https://github.com/promaster-gaming-8000">PromasterYTJava</a></li>
+                            </ul>
+                            <br>
+                            <li>Author of Vengi:</li>
+                            <ul>
+                                <li><a href="https://github.com/mgerhardy">Martin Gerhardy</a></li>
+                            </ul>
+                            <br>
+                            <li>Vengi Contributors:</li>
+                            <ul>
+                                <li><a href="https://github.com/Tudi">Tudi</a></li>
+                                <li><a href="https://github.com/Mailaender">Matthias Mailänder</a></li>
+                                <li><a href="https://github.com/trsh">trsh (Janis)</a></li>
+                                <li><a href="https://github.com/chieftecho">Yıldırım Karal</a></li>
+                                <li><a href="https://github.com/TTFH">Adrián Barreto</a></li>
+                                <li><a href="https://github.com/huetterma">Marvin Huetter</a></li>
+                                <li><a href="https://github.com/inoffensiveLama">inoffensiveLama</a></li>
+                                <li><a href="https://github.com/mmckegg">Matt McKegg</a></li>
+                                <li><a href="https://github.com/misode">Misode</a></li>
+                                <li><a href="https://github.com/Artemis918">Dieter Balsen</a></li>
+                                <li><a href="https://github.com/beicause">Luo Zhihao</a></li>
+                            </ul>
+                            <br>
+                            <li>Tutorial that I followed (Thanks to this guy):</li>
+                            <ul>
+                                <li><a href="https://www.youtube.com/watch?v=Erstqc5uSxU&t">How To Convert OBJ to VOX color | Voxel Tutorial | Blender 3.1</a></li>
+                            </ul>
+                        </ul>
+                        <br><br>
+                        <p>© Creative Commons License</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
